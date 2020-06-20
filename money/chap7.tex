@@ -1,4 +1,9 @@
 \chapter{利率风险}
+\begin{introduction}
+	\item Macaulay duration
+	\item 修正久期
+	\item 凸度
+\end{introduction}
 \begin{definition}{利息力}
 \noindent		设可积函数连续可导,则称
 \[
@@ -43,3 +48,17 @@ $$
 $$D_{\text {麦 }}=\frac{\sum_{t>0} t \cdot R_{t}(1+i)^{-t}}{P}=\frac{2036.19}{1076.16}=1.89$$
 修正久期：$$D=\frac{D_{\text {麦 }}}{1+i^{(2)} / 2}=\frac{1.89}{1+4 \% / 2}=1.86$$
 \end{solution}
+\subsection{修正久期}
+\begin{definition}{有效久期}
+$$D_{\text {效 }}=\frac{P_{-}-P_{+}}{2 \Delta y \cdot P}$$
+其中，\\
+$P_{+}:$ 收益率上升 $\Delta y$ 时的债券价格\\
+$P_{-}:$ 收益率下降 $\Delta y$ 时的债券价格
+\end{definition}
+\section{凸度}
+\begin{definition}{凸度}
+基于名义收益率 Y 的包度：
+$$C=\frac{P^{\prime \prime}(y)}{P(y)}=\frac{1}{P(y)}\left[\sum_{t>0} t\left(t+\frac{1}{m}\right) R_{t}\left(1+\frac{y}{m}\right)^{-m t-2}\right]$$
+\\特别地，当 $m=1$ 时， $y$ 即为实际利率 $i,$ 此时，凸度化简为：\\
+$$C=\frac{P^{\prime \prime}(i)}{P(i)}=\frac{1}{P(i)}\left[\sum_{t>0} t(t+1) R_{t}(1+i)^{-t-2}\right]$$
+\end{definition}

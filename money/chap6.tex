@@ -1,4 +1,9 @@
 \chapter{债务价值分析}
+\begin{introduction}
+	\item 定价公式
+	\item 等额偿债基金
+	\item 变额分期偿还
+\end{introduction}
 \section{符号一览}
 \noindent $P:$ 债券价格 (bond price) \\
 $i$ ：债券的到期收益率（yield-to-maturity rate)，即投资人购买债券者购买债券所要求的收益率\\
@@ -11,3 +16,28 @@ $n$ : 息票的支付次数 (number of coupon payments)\\
 $g:$ 债券的修正息票率, $g=\frac{r F}{C}$\\
 债券定价原理：到期偿还值+债券未来息票
 $$P=rFa_{\angles{n}}+Cv^n$$
+\begin{note}
+\begin{aligned}
+\frac{\partial P}{\partial i} &=-\left(\sum_{t=1}^{n} r F t v^{t+1}+C n v^{n+1}\right)<0 \\
+\frac{\partial^{2} P}{\partial i^{2}} &=\sum_{t=1}^{n} r F t(t+1) v^{t+2}+C n(n+1) v^{n+2}>0
+\end{aligned}
+\end{note}
+\noindent 定价公式主要包含：\\
+(1) 基本公式 \\
+(2) 溢价公式 \\
+(3) 基价公式 \\
+(4) Makeham 公式
+$$P=\left\{\begin{array}{ll}
+r F a_{\angles{n}}+C v^{n} & \text { 基本公式 } \\
+C+C(g-i) a_{\angles{n}} & \text { 溢价公式 } \\
+G+(C-G) v^{n} & \text { 基价公式 } \\
+\frac{g}{i}(C-K)+K & \text { Makeham 公式 }
+\end{array}\right.$$
+(1) 息票率：
+$$r=\frac{\text { 息票收入 }}{\text { 面值 }(F)}$$
+(2) 修正息票率：
+$$g=\frac{\text { 息票收入 }}{\text { 偿还值 }(C)}$$
+(3) 到期收益率：
+$$i=\frac{\text { 息票收入 }}{\text { 基价 }(G)}$$
+(4) 当期收益率：
+$$i_{c}=\frac{\text { 息票收入 }}{\text { 债券价格 }(P)}$$
