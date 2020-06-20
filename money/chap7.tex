@@ -1,0 +1,45 @@
+\chapter{利率风险}
+\begin{definition}{利息力}
+\noindent		设可积函数连续可导,则称
+\[
+\delta_{t}=\frac{a^{\prime}(t)}{a(t)}=[\ln a(t)]^{\prime}
+\]
+为时刻 t 的利息力
+		\end{definition}
+		\\ 衡量利息增长速率与利息本身大小的比值
+		很有意思的是，我们把t当做横坐标的时候，相当于t是定下来的,以这个为标准来用利息力来计算累积函数
+		$$\int_{0}^{t} \delta_{s} d s=\int_{0}^{t} \frac{a^{\prime}(s)}{a(s)} d s=\int_{0}^{t}[\ln a(s)]^{\prime} d s=\ln a(t)$$
+\section{Macaulay duration}
+	\begin{definition}{Macaulay duration}
+$$D_{\text {麦 }}=\frac{\sum_{t>0} t \cdot R_{t} e^{-\delta t}}{\sum_{t>0}  \cdot R_{t} e^{-\delta t}}$$
+\end{definition}
+\begin{note}
+一笔 $n$ 年期贷款，年实际利率为 $i,$ 按年等额分期偿还,求该笔贷款的麦考利久期。
+\end{note}
+\begin{solution}
+$$\begin{aligned}
+D_{\text {麦 }} &=\frac{\sum\limits_{t>0} t \cdot R(1+i)^{-t}}{\sum\limits_{t>0} R(1+i)^{-t}}=\frac{(I a)_{\angles{n }}}{a_{\angles{n }}}} \\
+&=\frac{\ddot{a}_{\angles{n}}-n v^{n}}{i \cdot a_{\angles{n }}}=\frac{(1+i) a_{\angles{n }}}{i \cdot a_{\angles{n }}}-\frac{n v^{n}}{i \cdot \frac{1-v^{n}}{i}} \\
+&=\frac{1+i}{i}-\frac{n}{(1+i)^{n}-1}
+\end{aligned}$$
+\end{solution}
+\subsection{修正久期}
+\begin{definition}{修正久期}
+$$D=\frac{D_{\text {麦 }}}{1+\frac{y}{m}}$$
+\end{definition}
+\begin{note}
+	债券面值为F,期限为n,到期时按面值偿还，年息票率为r,到期收益率r，求$D_{\text {麦 }$\\
+		$$D_{\text {麦 }}=\frac{\sum_{t=1}^{n}tv^trF+nv^nF}{\sum_{t=1}^{n}rFv^t+v^nF}$$
+		$$=\frac{\sum_{t=1}^{n}tv^tr+nv^n}{\sum_{t=1}^{n}rv^t+v^n}$$
+\end{note}
+\begin{exercise}
+某 2 年期债券的面值为 1000 元，年息票率为 8%，每半年末支付一次利息，债券到期按面值偿还。该债券每半年复利一次的到期收益率为4%，请计算该债券的修正久期
+\end{exercice}
+\begin{solution}
+该债券的价格为
+$$P=2 \times 40 a_{\angles{2}4 \%}^{(2)}+1000 \times(1+4 \% / 2)^{-4}=1076.16(\text { 元 })
+$$
+麦考利久期为
+$$D_{\text {麦 }}=\frac{\sum_{t>0} t \cdot R_{t}(1+i)^{-t}}{P}=\frac{2036.19}{1076.16}=1.89$$
+修正久期：$$D=\frac{D_{\text {麦 }}}{1+i^{(2)} / 2}=\frac{1.89}{1+4 \% / 2}=1.86$$
+\end{solution}

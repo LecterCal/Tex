@@ -1,0 +1,33 @@
+\documentclass[cn,11pt,chinese,black,toc=twocol]{elegantbook}
+\title{利息理论}
+\subtitle{made by \LaTeX{} }
+\author{Icecream}
+\cover{cover14.pdf}
+% 本文档命令
+\usepackage{tikz}
+\usepackage{mathpazo} 
+\usepackage{array}
+\newcommand{\ccr}[1]{\makecell{{\color{#1}\rule{1cm}{1cm}}}}
+
+\begin{document}
+\def\angles#1{{%
+		\vbox{\hrule height .2pt
+			\kern 1pt
+			\hbox{$\scriptstyle {#1}\kern 1pt$}%
+		}\kern-.05pt \vrule width .2pt
+}}
+%
+\maketitle
+\tableofcontents
+
+\chapter*{Introduction}
+\markboth{Introduction}{Introduction}
+保险精算研究的对象是年金,现金流和债券，年金的性质是研究现金流和债券的基础
+\input{chap1}
+\input{chap2}
+\input{chap3}
+\input{chap4}
+\input{chap5}
+\input{chap6}
+\input{chap7}
+\end{document}
