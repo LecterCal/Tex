@@ -6,10 +6,19 @@
 	\item 基金
 \end{introduction}
 \section{收益率}
-净现值
-\\收益率法
+已知一个项目的现金流，如何评价其收益水平的高低？\\
+\subsection{净现值}
+(1) 净现值法 (net present value, NPV)
+\[
+N P V(i)=\sum_{t=0}^{n} v^{t} R_{t}=\text { 资金流入现值 }-\text { 资金流出现值 }
+\]
+\subsection{收益率法}
+资金流入的现值与资金流出的现值之差就是净现值，所以收益率也是使得净现值等手零的利率：
+\[
+N P V(i)=\sum_{t=0}^{n} v^{t} R_{t}=0
+\]
 \section{基金的利息度量}
-\begin{definition}{Dollar-Weighted Return For a One-Year Period}
+\begin{definition}{币值加权收益率}
 \noindent	Suppose the following information is known:
 	(i) the balance in a fund at the start of the year is $A$ \\
 	(ii) for $0<t_{1}<t_{2}<\cdots<t_{n}<1,$ the net deposit at time $t_{k}$ is amount $C_{k}$ (positive for a net deposit, negative for a net withdrawal), and \\
@@ -18,11 +27,12 @@
 	\[
 	\frac{I}{A+\sum_{k=1}^{n} C_{k}\left(1-t_{k}\right)}
 	\]
+	\\---度量投资者的业绩
 \end{definition}
 \begin{remark}
 	$(Ia)_{\angles{n}}=\frac{\ddot{a}_{\bar{n}}-n v^{n}}{i}$
 \end{remark}
-\begin{definition}{Time-Weighted Return For a One-Year Period}
+\begin{definition}{时间加权收益率}
 \noinent Suppose the following information is known:\\
 	(i) the balance in a fund at the start of the year is $A$\\
 	(ii) for $0<t_{1}<t_{2}<\cdots<t_{n}<1,$ the net deposit at time $t_{k}$ is amount $C_{k}($ positive for a net deposit, negative for a net withdrawal)\\
@@ -32,8 +42,29 @@
 	\[
 	\left[\frac{F_{1}}{A} \times \frac{F_{2}}{F_{1}+C_{1}} \times \frac{F_{3}}{F_{2}+C_{2}} \times \cdots \times \frac{F_{k}}{F_{k-1}+C_{k-1}} \times \frac{B}{F_{k}+C_{k}}\right]-1
 	\]	
+	\\度量基金经理人的业绩
 \end{definition}	
 \section{再投资}
-
-
+\begin{example}
+期初投资 1 元，投资期限为 $n$ 年， 年实际利率为 $i$ ,如果每年产生的利息按照年实际利率 $j$ 进行用投资, 试计算在第 $n$ 年末的累积值与该项投资的年平均收益率。
+\end{example}
+\begin{solution}
+(1) 该投资在第 $n$ 年末的黑积值为 $1+i \cdot s_{\angles{n} j}$\\
+(2) 假设该项投资的年平均收益率为 X，则由价值方程
+\[
+1+i \cdot s_{\angles{n} j}=(1+x)^{n} \Longrightarrow x=\left(1+i \cdot s_{\angles{n} j}\right)^{\frac{1}{n}}-1
+\]
+特别地，当 $j=i$ 时 $, x=i$
+\end{solution}
+\subsection{修正收益率}
+如果再投资的利率与筹集资金的利率不同时,则评价项且应该使用修正收益率 (modified rate of internal rate) 在计算修正收益率时\\
+对资金流出使用筹资的利率计算其现值\\
+对资金流入使用再投资的利率计算其累积值
 \section{基金}
+\noindent 基金的收益：
+\\收入：利息（债券，银行存款）、股息、资本利得（股票价格上涉）
+\\净收益： 收入 - 费用
+基金包括不同时期投资，如何把基金收入分配给不同时期的投资?
+\\分配方法：
+\\投资组合法 (portfolio method)
+\\投资年度法 (investment year method)

@@ -57,8 +57,25 @@ $P_{-}:$ 收益率下降 $\Delta y$ 时的债券价格
 \end{definition}
 \section{凸度}
 \begin{definition}{凸度}
-基于名义收益率 Y 的包度：
+基于名义收益率Y的凸度：
 $$C=\frac{P^{\prime \prime}(y)}{P(y)}=\frac{1}{P(y)}\left[\sum_{t>0} t\left(t+\frac{1}{m}\right) R_{t}\left(1+\frac{y}{m}\right)^{-m t-2}\right]$$
 \\特别地，当 $m=1$ 时， $y$ 即为实际利率 $i,$ 此时，凸度化简为：\\
 $$C=\frac{P^{\prime \prime}(i)}{P(i)}=\frac{1}{P(i)}\left[\sum_{t>0} t(t+1) R_{t}(1+i)^{-t-2}\right]$$
 \end{definition}
+\begin{definition}{有效凸度}
+\noindent $$C_{\text {麦}}=\frac{P^{\prime \prime}(\delta)}{P(\delta)}=\frac{\sum_{t>0} t^{2} \cdot R_{t} e^{-\delta t}}{P(\delta)}=\sum_{t>0} t^{2} \cdot \frac{R_{t} e^{-\delta t}}{\sum_{t>0} R_{t} e^{-\delta t}}$$
+\end{definition}
+\begin{note}
+凸度可以用麦考利久期和麦考利凸度表示为：
+$$C=\left(C_{\text {麦 }}+D_{\text {麦}}\right) \cdot(1+i)^{-2}$$
+\end{note}
+\section{小结}
+$$P(y)=\sum_{i=0} R_{t}\left(1+\frac{y}{m}\right)^{-m t}$$
+$$\begin{array}{l}
+\text { 马考勒久期: } \operatorname{MacD}=-\frac{P^{\prime}(\delta)}{P(\delta)}=\frac{\sum_{i>0} t R_{t} \mathrm{e}^{-\delta t}}{P} \\
+\text { 马考勒凸度 }: \operatorname{Mac} C=\frac{P^{\prime \prime}(\delta)}{P}=\frac{\sum_{t>0} t^{2} R_{t} \mathrm{e}^{-\delta t}}{P} \\
+\text { 修正久期 }: D=-\frac{P^{\prime}(y)}{P(y)}=\frac{M a c D}{1+y / m} \\
+\text { 凸度 }: C=\frac{P^{\prime \prime}(y)}{P(y)}=\frac{1}{P(y)}\left[\sum_{t>0} t\left(t+\frac{1}{m}\right) R_{t}\left(1+\frac{y}{m}\right)^{-n t-2}\right] \\
+\text { 有效久期 }: E f f D=\frac{P_{-}-P_{+}}{P_{0}(2 \Delta y)} \\
+\text { 有效凸度 }: E f f C=\frac{\left(P_{+}+P_{-}-2 P_{0}\right)}{(\Delta y)^{2} P_{0}}
+\end{array}$$

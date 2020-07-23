@@ -30,6 +30,13 @@ i:利率,v:贴现因子,d：贴现函数
 		\\ 衡量利息增长速率与利息本身大小的比值
 		很有意思的是，我们把t当做横坐标的时候，相当于t是定下来的,以这个为标准来用利息力来计算累积函数
 		$$\int_{0}^{t} \delta_{s} d s=\int_{0}^{t} \frac{a^{\prime}(s)}{a(s)} d s=\int_{0}^{t}[\ln a(s)]^{\prime} d s=\ln a(t)$$
+		\begin{property}
+		$$\ln \left(a\left(t_{2}\right)\right)-\ln \left(a\left(t_{1}\right)\right)=\int_{t_{1}}^{t_{2}} \delta_{t} d t \text { or } a\left(t_{2}\right)=a\left(t_{1}\right) e^{\int_{t_{1}}^{t_{2}}\left(\delta_{t}\right) d t}$$
+\\We can also write, assuming that $a(0)=1$
+\[
+\ln (a(t))=\int_{0}^{t} \delta_{\tau} d \tau \text { or } a(t)=e^{\int_{0}^{t} \delta_{\tau} d \tau}
+\]
+\end{property}
 \begin{property}
 	累积函数：\\
 \[
@@ -57,3 +64,6 @@ $$(1+\frac{i^{(n)}}{n})^{n}=(1+\frac{i^{(m)}}{m})^{m}$$
 \begin{exercise}
 	在第1月末支付314元的现值与第18月末支付271元的现值之和,等于在第T月末支付1004元的现值．年实际利率为$5\%$. 求$T$
 \end{exercise}
+\begin{solution}
+$$1004 v^{T / 12}=314 v^{1 / 12}+271 v^{18 / 12} \Rightarrow T=141.6$$
+\end{solution}

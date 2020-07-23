@@ -32,7 +32,31 @@ $\ddot{s}_{\angles{n}}=\ddot{a}_{\angles{n}}(1+i)^{n}=\frac{(1+i)^{n}-1}{d}$
 \begin{property}
 $1=i{a}_{\angles{n}}+v^n$
 \end{property}
+\begin{property}
+$$\begin{array}{l}
+\ddot{a}_{\angles{n}}=a_{\angles{n}} \times(1+i) \\
+\ddot{a}_{\angles{n} }=a_{\angles{n-1} |+1 \\
+\ddot{S}_{\angles{n} }=S_{\bar{n}} \times(1+i) \\
+\ddot{S}_{\angles{n}}=S_{\angles{n+1} }-1
+\end{array}$$
+\end{property}
  \begin{definition}{每年支付m次年金}
- \noindent ${a}_{\angles{n}}^{\(m\)}=\frac{1-v^n}{i^{(m)}}$ 
+\noindent ${a}_{\angles{n}}^{(m)}=\frac{1-v^n}{i^{(m)}}$ 
  \end{definition}
- 
+ \section{永续年金(Perpetuity)}
+ 期初付永续年金的现值
+\[
+\ddot{a}_{\angles{\infty}}=1+v+v^{2}+\cdots=\frac{1}{1-v}=\frac{1}{1-v}=\frac{1}{d}
+\]
+期末付永续年金的现值
+\[
+a_{\angles{\infty}}=v+v^{2}+\cdots=\frac{1}{1-v}=\frac{v}{1-v}=\frac{v}{d}=\frac{v}{i v}=\frac{1}{i}
+\]
+与有限年金的联系
+\[
+\begin{array}{c}
+\ddot{a}_{\angles{\infty}}=\lim _{n \rightarrow \infty} \ddot{a}_{\pi}=\lim _{n \rightarrow \infty} \frac{1-v^{n}}{d}=\frac{1}{d} \\
+a_{\angles{n}}=\frac{1-v^{n}}{i}=\frac{1}{i}-v^{n} \frac{1}{i}=a_{\angles{\infty}}-v^{n} a_{\angles{\infty}} \Leftrightarrow a_{\infty}=a_{\angles{\infty}}+v^{n} a_{\angles{\infty}}
+\end{array}
+\]
+对期初付年金也有相应的关系： $\ddot{a}_{\angles{\infty}}=\ddot{a}_{\pi}+v^{n} \ddot{a}_{\angles{\infty}}$

@@ -1,0 +1,147 @@
+\documentclass[cn,11pt,chinese,black]{elegantbook}
+\title{用迭代法求解非线性方程的matlab实现}
+\author{组长：李宗翰 ,组员：蒋佩禧,袁浩然}
+\cover{cover4.png}
+% 本文档命令
+\usepackage{array}
+\newcommand{\ccr}[1]{\makecell{{\color{#1}\rule{1cm}{1cm}}}}
+\usepackage{mathpazo} 
+\usepackage{algorithm}  
+\usepackage{algpseudocode}  
+\usepackage{amsmath}  
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}  % Use Input in the format of Algorithm  
+\renewcommand{\algorithmicensure}{\textbf{Output:}} % Use Output in the format of Algorithm  
+\begin{document}  %开始写文章
+	\maketitle
+	\chapter{用迭代法求解非线性方程的matlab实现}
+	\section{算法结构}
+	对于非线性方程 $f(x)=0,$ 若 $f^{\prime}\left(x_{k}\right) \neq 0,$ 建立迭代格式
+	\[
+	x_{k+1}=x_{k}-\frac{f\left(x_{k}\right)}{f^{\prime}\left(x_{k}\right)}, k=0,1, \cdots
+	\]
+	相应的迭代函数
+	\[
+	\varphi(x)=x-\frac{f(x)}{f^{\prime}(x)}
+	\]
+	\subsection{计算步骤}
+\noindent	1. 给出 $x_{0}, \varepsilon, N$ \\
+	2. 计算 $x_{1}=x_{0}-\frac{f\left(x_{0}\right)}{f^{\prime}\left(x_{0}\right)}$ \\
+	3. 若 | $x_{1}-x_{0} \mid<\varepsilon$ 则转 $4, \quad$ 否则 $x_{0}=x_{1},$ 转步骤 2 \\
+	4. 输出 $x_{1},$ 结束
+\begin{lstlisting}[ language=Matlab] 
+function Newton(f,x0,e)
+syms x
+y=f(x);  %把f(x)转化为符号函数y
+df=matlabFunction(gradient(y)); %对y求导，并把导数转化为句柄函数df
+x=x0-feval(f,x0)/feval(df,x0);
+k=0;
+while norm(x-x0)>e   %判断误差
+ k=k+1;
+ x0=x;
+ x=x0-feval(f,x0)/feval(df,x0);
+ if k==500        %限制循环次数
+ error('迭代次数过多可能不收敛')
+ else 
+fprintf('%d%f\n',k,x) %输出结果
+end
+end
+\end{lstlisting}
+\subsection{进一步改进}
+\begin{lstlisting}[ language=Matlab] 
+function [c,E,fc]=newton1(f,a,b,error,n_iter)
+if sum(size(a))~=2 || sum(size(b))~=2
+error('错误'); 
+end  
+end
+if (nargin<4) 
+error=0.00001;
+n_iter=1000;
+elseif (nargin<5) 
+n_iter=1000;
+if sum(size(error))~=2
+error('.'); 
+end
+else
+if sum(size(error))~=2
+error('.'); 
+end
+if round(n_iter)-n_iter~=0
+error('.');
+end
+end
+if subs(f,a)*subs(f,b)>0
+error('');
+end
+%%  Newton
+if subs(f,a)*subs(diff(f,2),a)>0
+x=a; 
+else
+x=b; 
+end
+E=b-a;
+xa=x; i=0;
+RES(1,1)=x; ERR(1,1)=E;
+
+while (E>=error) && (i<n_iter)
+if subs(f,x)==0
+fprintf(: %f',x);
+break;
+else
+x=xa-( subs(f,xa) / subs( diff(f),xa ) );
+end
+E=abs(x-xa);
+xa=x;
+i=i+1;
+RES(i+1,1)=x; ERR(i+1,1)=E;
+end
+disp('--------|----------|------------|');
+fprintf('Iter.Aprox.Error.\n');
+disp('--------|----------|------------|');
+fprintf('%-10s%-11.4f%-12.4f\n','ini',RES(1,1),ERR(1,1));
+for i=2:max(size(RES))
+fprintf('%-10.0d%-11.4f%-12.4f\n',i-1,RES(i,1),ERR(i,1));
+end
+disp('--------|----------|------------|');
+c=x; fc=subs(f,x);
+\end{lstlisting}
+$$f(x)=x^2-1$$
+\begin{lstlisting}
+ f=sym('x^2-1');
+ [c,E,fc]=newton1(f,0,3,0.005,20);
+\end{lstlisting}
+$$\begin{array}{lll}
+\text { Iter. } & \text { Aprox. } & \text { Error. } \\
+\text {  } & 3.0000 & 3.0000 \\
+1 & 1.6667 & 1.3333 \\
+2 & 1.1333 & 0.5333 \\
+3 & 1.0078 & 0.1255 \\
+4 & 1.0000 & 0.0078 \\
+5 & 1.0000 & 0.0000
+\end{array}$$
+\begin{lstlisting}
+f=sym('x^5+x^4-1');
+ [c,E,fc]=newton1(f,0,3,0.005,20);
+\end{lstlisting}
+$$\begin{array}{lll}
+\text { Iter. } & \text { Aprox. } & \text { Error. } \\
+\text {  } & 3.0000 & 3.0000 \\
+1 & 2.3704 & 0.6296 \\
+2 & 1.8711 & 0.4992 \\
+3 & 1.4803 & 0.3908 \\
+4 & 1.1853 & 0.2950 \\
+5 & 0.9849 & 0.2005 \\
+6 & 0.8831 & 0.1017 \\
+7 & 0.8580 & 0.0251 \\
+8 & 0.8567 & 0.0014
+\end{array}$$
+\section{牛顿法和二分法做对比}
+$$x^{4}-50 x^{3}-6000=0$$
+分别根据牛顿法和二分法进行实验
+$$\begin{array}{|c|c|c|}
+\hline \text { 迭代数 } & \text { 每次迭代初始值：x0 }  & \text { 每次迭代输出值x1 }: \ \\
+\hline 1 & 50.0000000000000 & 52.6440010000000 \\
+\hline 2 & 52.4057080000000 & 52.4087180000000 \\
+\hline 3 & 52.4067310000000 & 52.4087310000000 \\
+\hline
+\end{array}$$
+\end{document}
